@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fibonacci Series</title>
+</head>
+<body>
+    <h1>Fibonacci Series</h1>
+    
+    <p>Enter the number of Fibonacci terms to generate:</p>
+    
+    <input type="number" id="numTerms" placeholder="Number of Terms">
+    <button onclick="generateFibonacci()">Generate Fibonacci Series</button>
+    
+    <p id="result"></p>
+    
+    <script>
+        function generateFibonacci() {
+            var numTerms = parseInt(document.getElementById('numTerms').value);
+            
+            if (isNaN(numTerms) || numTerms <= 0) {
+                document.getElementById('result').innerHTML = "Please enter a valid positive number.";
+                return;
+            }
+            
+            var fibonacciSeries = [0, 1];
+            
+            for (var i = 2; i < numTerms; i++) {
+                var nextTerm = fibonacciSeries[i - 1] + fibonacciSeries[i - 2];
+                fibonacciSeries.push(nextTerm);
+            }
+            
+            document.getElementById('result').innerHTML = "Fibonacci Series: " + fibonacciSeries.join(", ");
+        }
+    </script>
+</body>
+</html>
